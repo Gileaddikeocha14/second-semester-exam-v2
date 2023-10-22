@@ -1,0 +1,201 @@
+#!/bin/bash
+
+vagrant init ubuntu/focal64
+
+cat <<EOF > Vagrantfile
+Vagrant.configure("2") do |config|
+
+  config.vm.define "slave_1" do |slave_1|
+
+    slave_1.vm.hostname = "slave-1"
+    slave_1.vm.box = "ubuntu/focal64"
+    slave_1.vm.network "private_network", ip: "192.168.20.11"
+
+    slave_1.vm.provision "shell", inline: <<-SHELL
+    sudo apt-get update && sudo apt-get upgrade -y
+    sudo apt-get install -y avahi-daemon libnss-mdns
+    SHELL
+  end
+
+  config.vm.define "master" do |master|
+
+    master.vm.hostname = "master"
+    master.vm.box = "ubuntu/focal64"
+    master.vm.network "private_network", ip: "192.168.20.10"
+
+    master.vm.provision "shell", inline: <<-SHELL
+    sudo apt-get update && sudo apt-get upgrade -y
+    sudo apt-get install -y avahi-daemon libnss-mdns
+    SHELL
+  end
+
+    config.vm.provider "virtualbox" do |vb|
+      vb.memory = "1024"
+      vb.cpus = "2"
+    end
+end
+EOF
+
+
+
+vagrant up
+
+MR GILEAD@DESKTOP-6PEQHM3 MINGW64 ~/desktop/altschool-cloud (main)
+$ vagrant up
+==> vagrant: A new version of Vagrant is available: 2.4.0 (installed version: 2.3.7)!
+==> vagrant: To upgrade visit: https://www.vagrantup.com/downloads.html
+
+Bringing machine 'default' up with 'virtualbox' provider...
+==> default: Checking if box 'ubuntu/focal64' version '20230915.0.0' is up to date...
+==> default: A newer version of the box 'ubuntu/focal64' for provider 'virtualbox' is
+==> default: available! You currently have version '20230915.0.0'. The latest is version
+==> default: '20231011.0.0'. Run `vagrant box update` to update.
+==> default: Resuming suspended VM...
+==> default: Booting VM...
+==> default: Waiting for machine to boot. This may take a few minutes...
+    default: SSH address: 127.0.0.1:2222
+    default: SSH username: vagrant
+    default: SSH auth method: private key
+==> default: Machine booted and ready!
+==> default: Machine already provisioned. Run `vagrant provision` or use the `--provision`
+==> default: flag to force provisioning. Provisioners marked to run always will still run.
+
+MR GILEAD@DESKTOP-6PEQHM3 MINGW64 ~/desktop/altschool-cloud (main)
+$ #!/bin/bash
+
+vagrant init ubuntu/focal64
+
+cat <<EOF > Vagrantfile
+Vagrant.configure("2") do |config|
+
+  config.vm.define "slave_1" do |slave_1|
+
+    slave_1.vm.hostname = "slave-1"
+    slave_1.vm.box = "ubuntu/focal64"
+    slave_1.vm.network "private_network", ip: "192.168.20.11"
+
+    slave_1.vm.provision "shell", inline: <<-SHELL
+    sudo apt-get update && sudo apt-get upgrade -y
+    sudo apt-get install -y avahi-daemon libnss-mdns
+    SHELL
+  end
+
+  config.vm.define "master" do |master|
+
+    master.vm.hostname = "master"
+    master.vm.box = "ubuntu/focal64"
+    master.vm.network "private_network", ip: "192.168.20.10"
+
+    master.vm.provision "shell", inline: <<-SHELL
+    sudo apt-get update && sudo apt-get upgrade -y
+    sudo apt-get install -y avahi-daemon libnss-mdns
+    SHELL
+  end
+
+    config.vm.provider "virtualbox" do |vb|
+      vb.memory = "1024"
+      vb.cpus = "2"
+    end
+end
+EOF
+`Vagrantfile` already exists in this directory. Remove it before
+running `vagrant init`.
+
+MR GILEAD@DESKTOP-6PEQHM3 MINGW64 ~/desktop/altschool-cloud (main)
+$ rm-rf vagrantfile
+bash: rm-rf: command not found
+
+MR GILEAD@DESKTOP-6PEQHM3 MINGW64 ~/desktop/altschool-cloud (main)
+$ rm -rf vagrantfile
+
+MR GILEAD@DESKTOP-6PEQHM3 MINGW64 ~/desktop/altschool-cloud (main)
+$ ./master-slave.sh
+bash: ./master-slave.sh: No such file or directory
+
+MR GILEAD@DESKTOP-6PEQHM3 MINGW64 ~/desktop/altschool-cloud (main)
+$ #!/bin/bash
+
+vagrant init ubuntu/focal64
+
+cat <<EOF > Vagrantfile
+Vagrant.configure("2") do |config|
+
+  config.vm.define "slave_1" do |slave_1|
+
+    slave_1.vm.hostname = "slave-1"
+    slave_1.vm.box = "ubuntu/focal64"
+    slave_1.vm.network "private_network", ip: "192.168.20.11"
+
+    slave_1.vm.provision "shell", inline: <<-SHELL
+    sudo apt-get update && sudo apt-get upgrade -y
+    sudo apt-get install -y avahi-daemon libnss-mdns
+    SHELL
+  end
+
+  config.vm.define "master" do |master|
+
+    master.vm.hostname = "master"
+    master.vm.box = "ubuntu/focal64"
+    master.vm.network "private_network", ip: "192.168.20.10"
+
+    master.vm.provision "shell", inline: <<-SHELL
+    sudo apt-get update && sudo apt-get upgrade -y
+    sudo apt-get install -y avahi-daemon libnss-mdns
+    SHELL
+  end
+end
+EOF
+A `Vagrantfile` has been placed in this directory. You are now
+ready to `vagrant up` your first virtual environment! Please read
+the comments in the Vagrantfile as well as documentation on
+`vagrantup.com` for more information on using Vagrant.
+
+MR GILEAD@DESKTOP-6PEQHM3 MINGW64 ~/desktop/altschool-cloud (main)
+$ vagrant up
+Bringing machine 'slave_1' up with 'virtualbox' provider...
+Bringing machine 'master' up with 'virtualbox' provider...
+==> slave_1: Importing base box 'ubuntu/focal64'...
+==> slave_1: Matching MAC address for NAT networking...
+==> slave_1: Checking if box 'ubuntu/focal64' version '20230915.0.0' is up to date...
+==> slave_1: Setting the name of the VM: altschool-cloud_slave_1_1697860528719_93490
+==> slave_1: Fixed port collision for 22 => 2222. Now on port 2200.
+==> slave_1: Clearing any previously set network interfaces...
+==> slave_1: Preparing network interfaces based on configuration...
+    slave_1: Adapter 1: nat
+    slave_1: Adapter 2: hostonly
+==> slave_1: Forwarding ports...
+    slave_1: 22 (guest) => 2200 (host) (adapter 1)
+==> slave_1: Running 'pre-boot' VM customizations...
+==> slave_1: Booting VM...
+==> slave_1: Waiting for machine to boot. This may take a few minutes...
+    slave_1: SSH address: 127.0.0.1:2200
+    slave_1: SSH username: vagrant
+    slave_1: SSH auth method: private key
+    slave_1: Warning: Connection reset. Retrying...
+    slave_1: Warning: Connection aborted. Retrying...
+    slave_1:
+    slave_1: Vagrant insecure key detected. Vagrant will automatically replace
+    slave_1: this with a newly generated keypair for better security.
+    slave_1:
+    slave_1: Inserting generated public key within guest...
+    slave_1: Removing insecure key from the guest if it's present...
+    slave_1: Key inserted! Disconnecting and reconnecting using new SSH key...
+==> slave_1: Machine booted and ready!
+==> slave_1: Checking for guest additions in VM...
+    slave_1: The guest additions on this VM do not match the installed version of
+    slave_1: VirtualBox! In most cases this is fine, but in rare cases it can
+    slave_1: prevent things such as shared folders from working properly. If you see
+    slave_1: shared folder errors, please make sure the guest additions within the
+    slave_1: virtual machine match the version of VirtualBox you have installed on
+    slave_1: your host and reload your VM.
+    slave_1:
+    slave_1: Guest Additions Version: 6.1.38
+    slave_1: VirtualBox Version: 7.0
+==> slave_1: Setting hostname...
+==> slave_1: Configuring and enabling network interfaces...
+==> slave_1: Mounting shared folders...
+    slave_1: /vagrant => C:/Users/MR GILEAD/Desktop/altschool-cloud
+==> slave_1: Running provisioner: shell...
+    slave_1: Running: inline script
+    slave_1: Get:1 http://security.ubuntu.com/ubuntu focal-security InRelease [114 kB]
+    slave_1: Hit:2 http://archive.ubuntu.com/ubuntu focal InRelease
