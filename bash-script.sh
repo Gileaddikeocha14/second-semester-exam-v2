@@ -18,7 +18,7 @@ sudo apt update && sudo apt upgrade -y < /dev/null
 
 ###############################################################
 sudo apt-get install apache2 -y < /dev/null
-
+sudo apt install ansible -y < /dev/null
 sudo apt-get install mysql-server -y < /dev/null
 
 sudo add-apt-repository -y ppa:ondrej/php < /dev/null
@@ -145,11 +145,11 @@ echo "Password:   $PASS"
 
 #########################################################
 
-sudo sed -i 's/DB_DATABASE=laravel/DB_DATABASE=teddi/' /var/www/html/laravel/.env
+sudo sed -i 's/DB_DATABASE=laravel/DB_DATABASE=gilead1/' /var/www/html/laravel/.env
 
-sudo sed -i 's/DB_USERNAME=root/DB_USERNAME=teddi/' /var/www/html/laravel/.env
+sudo sed -i 's/DB_USERNAME=root/DB_USERNAME=gilead1i/' /var/www/html/laravel/.env
 
-sudo sed -i 's/DB_PASSWORD=/DB_PASSWORD=teddi90/' /var/www/html/laravel/.env
+sudo sed -i 's/DB_PASSWORD=/DB_PASSWORD=gilead14/' /var/www/html/laravel/.env
 
 php artisan config:cache
 
