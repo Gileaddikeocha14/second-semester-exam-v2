@@ -1,8 +1,4 @@
-# second-semester-exam-v2
-[defaults]
-inventory = inventory
-private_key_file = ~/.ssh/id_rsa
-host_key_checking = False
+BASH SCRIPT
 
 
 #!/bin/bash
@@ -25,6 +21,7 @@ sudo apt update && sudo apt upgrade -y < /dev/null
 
 ###############################################################
 sudo apt-get install apache2 -y < /dev/null
+sudo apt install ansible -y < /dev/null
 
 sudo apt-get install mysql-server -y < /dev/null
 
