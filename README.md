@@ -21,6 +21,7 @@ sudo apt update && sudo apt upgrade -y < /dev/null
 
 ###############################################################
 sudo apt-get install apache2 -y < /dev/null
+
 sudo apt install ansible -y < /dev/null
 
 sudo apt-get install mysql-server -y < /dev/null
