@@ -1,0 +1,63 @@
+Explanation of the Script:
+The Script that helps install a master and slave in ubuntu vagrant machine and runs LAMP Stack.The script must have the following:
+- Vagrant 
+- Virtual box
+
+Slave and Master:
+      memory: 1024
+      cpu's :2
+
+The slave machine:
+ Spec:
+    name= slave1
+    image=Ubuntu/focal64
+  network:
+        private_netwok
+        constant ip:"192.168.20.11"
+
+Slave configuration:
+update and upgrade machine
+
+Install:
+ -sshpass:This allows you to chip in the password while looping in
+ -switching the password authenticator on to logging using password
+ -restart the sshd service 
+ -installing avahi-deamon libnss-mdns
+
+Master machine
+    Spec:
+      Host  name= master
+       image=Ubuntu/focal64
+    network:
+        private_netwok
+        constant ip:"192.168.20.10"
+
+Master configuration:
+    update and upgrade machine
+
+Install:
+    -sshpass:This allows you to chip in the password while looping in
+    -switching the password authenticator on to logging using password
+    -restart the sshd service 
+    -installing avahi-deamon libnss-mdns
+
+Script configuration:
+  -creating a sudo user 
+  -creating ssh key for the user "altschool"
+  -copy the user "altschool" ssh to the slave machine(only the user should be able to ssh into      the slave machine with a password)
+  -copy a file named"/mnt" from the "altschool" user to the slave machine
+
+LAMP Stack (Master and Slave installation):
+LAMP:(linux.apache2, mysql and php):
+    -installing apache2
+    -installing php and requirements
+    -installing Mysql
+    -Enanling modules
+    -Restarting Apache
+
+Fially a LAMP stack will be installed on both master and slave once the script runs.Apache is going to be restarted after installation and configuration.
+
+And mysql server and client are going to be installed on both master and slave
+
+Different versions of php is going to be installed and permissions for /var/www is going to be set to an owner and group of "www-data:www-data"
+
